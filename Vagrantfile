@@ -90,6 +90,9 @@ Vagrant.configure("2") do |config|
     mysql -u root -pChiclayo17 --execute="GRANT ALL PRIVILEGES ON wordpressdb.* TO wordpressuser@localhost;"
     mysql -u root -pChiclayo17 --execute="FLUSH PRIVILEGES;"
 
+    # mysqldump -u root -pChiclayo17 wordpressdb > /vagrant/vagrant-config/dump_name.sql
+    mysql -u root -pChiclayo17 wordpressdb < /vagrant/vagrant-config/wordpressdb_20170618_base.sql
+
     sudo apt-get install -y php5-fpm php5-mysql php5-gd libssh2-php
     sudo sed -i "/;cgi.fix_pathinfo=1/c\cgi.fix_pathinfo=0" /etc/php5/fpm/php.ini
 
