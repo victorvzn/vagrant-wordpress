@@ -81,17 +81,17 @@ Vagrant.configure("2") do |config|
     
     sudo nginx -t
 
-    sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password Chiclayo17'
-    sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password Chiclayo17'
+    sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password Sup3rS3cre3t'
+    sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password Sup3rS3cre3t'
     sudo apt-get -y install mysql-server
 
-    mysql -u root -pChiclayo17 --execute="CREATE DATABASE wordpressdb;"
-    mysql -u root -pChiclayo17 --execute="CREATE USER wordpressuser@localhost IDENTIFIED BY 'Chiclayo17';"
-    mysql -u root -pChiclayo17 --execute="GRANT ALL PRIVILEGES ON wordpressdb.* TO wordpressuser@localhost;"
-    mysql -u root -pChiclayo17 --execute="FLUSH PRIVILEGES;"
+    mysql -u root -pSup3rS3cre3t --execute="CREATE DATABASE wordpressdb;"
+    mysql -u root -pSup3rS3cre3t --execute="CREATE USER wordpressuser@localhost IDENTIFIED BY 'Sup3rS3cre3t';"
+    mysql -u root -pSup3rS3cre3t --execute="GRANT ALL PRIVILEGES ON wordpressdb.* TO wordpressuser@localhost;"
+    mysql -u root -pSup3rS3cre3t --execute="FLUSH PRIVILEGES;"
 
-    # mysqldump -u root -pChiclayo17 wordpressdb > /vagrant/vagrant-config/dump_name.sql
-    mysql -u root -pChiclayo17 wordpressdb < /vagrant/vagrant-config/wordpressdb_20170618_base.sql
+    # mysqldump -u root -pSup3rS3cre3t wordpressdb > /vagrant/vagrant-config/dump_name.sql
+    mysql -u root -pSup3rS3cre3t wordpressdb < /vagrant/vagrant-config/wordpressdb_20170618_base.sql
 
     sudo apt-get install -y php5-fpm php5-mysql php5-gd libssh2-php
     sudo sed -i "/;cgi.fix_pathinfo=1/c\cgi.fix_pathinfo=0" /etc/php5/fpm/php.ini
